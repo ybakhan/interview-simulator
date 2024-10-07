@@ -160,4 +160,4 @@ that as a Form3 Senior Engineer, you may not have access to those tools.
 3. Let us know you've completed the exercise using the link provided at the bottom of the email from our recruitment team.
 
 > [!CAUTION]
-> Submissions that are not private repositories will not be rejected without a review.
+> Submissions that are not private repositories will be rejected without a review.
