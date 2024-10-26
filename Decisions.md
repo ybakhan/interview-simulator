@@ -1,0 +1,12 @@
+- Used `sync.Map` to collect a mapping of active connections and `CancelFunc`. On shutdown timeout, the map enables termination of active connections and rejection of active requests.
+- Used atomic counter to uniquely identify active connections in `sync.Map`.
+- On shutdown, if no active connections exist, the server will immediately shut down.
+- On shutdown, the server will no longer accept new connections.
+- On shutdown with active connections, the server will:
+  - Wait for the grace period.
+  - Continue accepting requests until the grace period ends.
+- Only one request is in progress per connection.
+- On shutdown, active connections with no in-progress requests will immediately disconnect.
+- On shutdown, active connections with in-progress requests will:
+  - Reject the request and disconnect.
+  - Discard any pending requests from the client.
